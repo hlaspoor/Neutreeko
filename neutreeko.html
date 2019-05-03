@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Neutreeko</title>
+    <link rel="stylesheet" href="css/neutreeko.css">
+    <script src="js/jquery-3.4.0.min.js"></script>
+    <script src="js/plugins/CSSPlugin.min.js"></script>
+    <script src="js/easing/EasePack.min.js"></script>
+    <script src="js/TweenLite.min.js"></script>
+    <script src="js/def.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/neutreeko.js"></script>
+    <script src="js/engine.js"></script>
+</head>
+<body>
+<div class="page_container no_select">
+    <div class="page_left_container">
+        <div class="left_container">
+            <div id="game_result_container">
+                <div id="game_result">
+                    Initializing...
+                </div>
+            </div>
+        <div class="board_container">
+            <div class="cell_container">
+                <div class="row">
+                    <div class="cell">
+                        <div class="cell_coord_v">5</div>
+                    </div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                <div class="row">
+                    <div class="cell">
+                        <div class="cell_coord_v">4</div>
+                    </div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+                <div class="row">
+                    <div class="cell">
+                        <div class="cell_coord_v">3</div>
+                    </div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+                <div class="row">
+                    <div class="cell">
+                        <div class="cell_coord_v">2</div>
+                    </div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+                <div class="row">
+                    <div class="cell">
+                        <div class="cell_coord_v">1</div>
+                        <div class="cell_coord_h">a</div>
+                    </div>
+                    <div class="cell">
+                        <div class="cell_coord_h">b</div>
+                    </div>
+                    <div class="cell">
+                        <div class="cell_coord_h">c</div>
+                    </div>
+                    <div class="cell">
+                        <div class="cell_coord_h">d</div>
+                    </div>
+                    <div class="cell">
+                        <div class="cell_coord_h">e</div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="dot_container">
+                <div class="row">
+                    <div id="d8" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d9" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d10" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d11" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d12" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="d15" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d16" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d17" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d18" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d19" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="d22" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d23" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d24" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d25" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d26" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="d29" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d30" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d31" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d32" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d33" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="d36" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d37" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d38" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d39" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                    <div id="d40" class="cell">
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight_container">
+                <div class="highlight_row">
+                    <div id="h8" class="highlight_cell"></div>
+                    <div id="h9" class="highlight_cell"></div>
+                    <div id="h10" class="highlight_cell"></div>
+                    <div id="h11" class="highlight_cell"></div>
+                    <div id="h12" class="highlight_cell"></div>
+                </div>
+                <div class="highlight_row">
+                    <div id="h15" class="highlight_cell"></div>
+                    <div id="h16" class="highlight_cell"></div>
+                    <div id="h17" class="highlight_cell"></div>
+                    <div id="h18" class="highlight_cell"></div>
+                    <div id="h19" class="highlight_cell"></div>
+                </div>
+                <div class="highlight_row">
+                    <div id="h22" class="highlight_cell"></div>
+                    <div id="h23" class="highlight_cell"></div>
+                    <div id="h24" class="highlight_cell"></div>
+                    <div id="h25" class="highlight_cell"></div>
+                    <div id="h26" class="highlight_cell"></div>
+                </div>
+                <div class="highlight_row">
+                    <div id="h29" class="highlight_cell"></div>
+                    <div id="h30" class="highlight_cell"></div>
+                    <div id="h31" class="highlight_cell"></div>
+                    <div id="h32" class="highlight_cell"></div>
+                    <div id="h33" class="highlight_cell"></div>
+                </div>
+                <div class="highlight_row">
+                    <div id="h36" class="highlight_cell"></div>
+                    <div id="h37" class="highlight_cell"></div>
+                    <div id="h38" class="highlight_cell"></div>
+                    <div id="h39" class="highlight_cell"></div>
+                    <div id="h40" class="highlight_cell"></div>
+                </div>
+            </div>
+            <div class="stone_container">
+                <div id="s1" class="stone">
+                    <div class="moon"></div>
+                </div>
+                <div id="s2" class="stone">
+                    <div class="moon"></div>
+                </div>
+                <div id="s3" class="stone">
+                    <div class="moon"></div>
+                </div>
+                <div id="s4" class="stone">
+                    <div class="moon"></div>
+                </div>
+                <div id="s5" class="stone">
+                    <div class="moon"></div>
+                </div>
+                <div id="s6" class="stone">
+                    <div class="moon"></div>
+                </div>
+            </div>
+            <div class="arrow_container">
+                <svg id="svg_arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361 361">
+                    <defs>
+                        <marker id="arrowhead" markerWidth="8" markerHeight="8"
+                                refX="0" refY="2" orient="auto">
+                            <polygon points="0 0, 5 2, 0 4" fill="#d01919" fill-opacity="0.9" />
+                        </marker>
+                    </defs>
+                    <line id="arrow_line" x1="-999" y1="-999" x2="-999" y2="-999" stroke="#d01919" stroke-opacity="0.9"
+                          stroke-width="5" marker-end="url(#arrowhead)" />
+                </svg>
+            </div>
+            <div class="touch_container">
+                <div class="touch_row">
+                    <div id="c8" class="touch_cell"></div>
+                    <div id="c9" class="touch_cell"></div>
+                    <div id="c10" class="touch_cell"></div>
+                    <div id="c11" class="touch_cell"></div>
+                    <div id="c12" class="touch_cell"></div>
+                </div>
+                <div class="touch_row">
+                    <div id="c15" class="touch_cell"></div>
+                    <div id="c16" class="touch_cell"></div>
+                    <div id="c17" class="touch_cell"></div>
+                    <div id="c18" class="touch_cell"></div>
+                    <div id="c19" class="touch_cell"></div>
+                </div>
+                <div class="touch_row">
+                    <div id="c22" class="touch_cell"></div>
+                    <div id="c23" class="touch_cell"></div>
+                    <div id="c24" class="touch_cell"></div>
+                    <div id="c25" class="touch_cell"></div>
+                    <div id="c26" class="touch_cell"></div>
+                </div>
+                <div class="touch_row">
+                    <div id="c29" class="touch_cell"></div>
+                    <div id="c30" class="touch_cell"></div>
+                    <div id="c31" class="touch_cell"></div>
+                    <div id="c32" class="touch_cell"></div>
+                    <div id="c33" class="touch_cell"></div>
+                </div>
+                <div class="touch_row">
+                    <div id="c36" class="touch_cell"></div>
+                    <div id="c37" class="touch_cell"></div>
+                    <div id="c38" class="touch_cell"></div>
+                    <div id="c39" class="touch_cell"></div>
+                    <div id="c40" class="touch_cell"></div>
+                </div>
+            </div>
+        </div>
+            <div class="info_container" id="info_container">
+
+            </div>
+        </div>
+    </div>
+    <div class="page_right_container">
+        <div class="right_container">
+            <h1>Neutreeko</h1>
+            <p class="h1_sub">
+                Neutreeko is a simple game played on a board with 5×5 squares<br>
+                The name is a portmanteau of Neutron and Teeko, two games on which it is based.<br>
+                Designed by Jan Kristian Haugland.<br><br>
+            </p>
+            <h2>Initial setup</h2>
+            <p>The players have three pieces each. They are placed as shown left.
+            </p>
+            <h2>Movement</h2>
+            <p>
+                A piece slides orthogonally or diagonally until stopped by an occupied square or
+                the border of the board. Black always moves first.
+            </p>
+            <h2>Objective</h2>
+            <p>
+                To get three in a row, orthogonally or diagonally. The row must be connected.
+            </p>
+            <h2>Repetitions</h2>
+            <p>
+                A match is declared a draw if the same position occurs three times.
+            </p>
+<!--            <h2>Tactical depth</h2>-->
+<!--            <p>-->
+<!--                There are positions for which perfect play leads to a win in 51 moves (that is,-->
+<!--                26 moves by one player and 25 by the other one). Only about 3% of all legal positions are neutral,-->
+<!--                including the starting position.-->
+<!--            </p>-->
+<!--            <h2>Strategy</h2>-->
+<!--            <p>-->
+<!--                Neutreeko is a highly tactical game with little room for long-term strategic planning.-->
+<!--                But if neither side has an attack coming up, it can often be a good idea to immobilize-->
+<!--                your opponent by forcing him into a corner.-->
+<!--            </p>-->
+            <h2>Play</h2>
+            <p>
+                <a class="btn_play" id="play_black" href="javascript:void(0);">Play against AI (you go first)</a><br>
+                <a class="btn_play" id="play_white" href="javascript:void(0);">Play against AI (you go second)</a><br>
+            </p>
+<!--            <h2>Move History</h2>-->
+<!--            <p>-->
+<!--                1.a1-b1 c4-d5 2.a2-b2 d8-e2 1.a1-b1 c4-d5 2.a2-b2 d8-e2 1.a1-b1 c4-d5 2.a2-b2 d8-e2 1.a1-b1 c4-d5 2.a2-b2 d8-e2 1.a1-b1 c4-d5 2.a2-b2 d8-e2-->
+<!--                1.a1-b1 c4-d5 2.a2-b2 d8-e2 1.a1-b1 c4-d5 2.a2-b2 d8-e2 1.a1-b1 c4-d5 2.a2-b2 d8-e2 1.a1-b1 c4-d5 2.a2-b2 d8-e2 1.a1-b1 c4-d5 2.a2-b2 d8-e2-->
+<!--                1.a1-b1 c4-d5 2.a2-b2 d8-e2 1.a1-b1 c4-d5 2.a2-b2 d8-e2 1.a1-b1 c4-d5 2.a2-b2 d8-e2-->
+<!--            </p>-->
+<!--            <div class="ui icon buttons no_select">-->
+<!--                <button type="button" class="ui black button" id="btn_first">-->
+<!--                    First-->
+<!--                </button>-->
+<!--                <button type="button" class="ui black button" id="btn_prev">-->
+<!--                    Prev-->
+<!--                </button>-->
+<!--                <button type="button" class="ui black button" id="btn_next">-->
+<!--                    Next-->
+<!--                </button>-->
+<!--                <button type="button" class="ui black button" id="btn_last">-->
+<!--                    Last-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <h2>Option</h2>-->
+<!--            <div>-->
+<!--                <input type="checkbox" id="chk_show_coordinates" name="chk_show_coordinates" checked="checked">-->
+<!--                <label for="chk_show_coordinates">Show Coordinates</label>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <input type="checkbox" id="chk_show_last_move" name="chk_show_last_move" checked="checked">-->
+<!--                <label for="chk_show_last_move">Show Last Move</label>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+</body>
+</html>
