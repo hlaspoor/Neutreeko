@@ -91,12 +91,13 @@ UI.prototype.init = function () {
                         var moves = g_eng.think(g_board.getPoscode());
                         if (moves.length > 0) {
                             var m = moves[0];
-                            console.log(m);
+                            // console.log(m);
                             var fromPos = (MOVE_IDX(m.from + 8)-32 + 1)+(5-parseInt(m.from.substring(1)) + 1) * 7;
                             var toPos = (MOVE_IDX(m.to + 8)-32 + 1)+(5-parseInt(m.to.substring(1)) + 1) * 7;
                             // ui.makeMove(ui._board._curSide, fx,fy);
                             // console.log(fromPos + "_" + toPos);
                             ui.makeMove(ui._board._curSide, fromPos, toPos);
+                            ui.giveSuggestion();
                         }
                     }
                 }
@@ -107,6 +108,13 @@ UI.prototype.init = function () {
             }).delay(0.6);
         }
     });
+};
+
+UI.prototype.giveSuggestion = function() {
+    var think = g_eng.think(g_board.getPoscode());
+    if(think.length > 0) {
+        console.log("Move Suggestion: " + think[0].from + "-" + think[0].to + " (" + think[0].desc + ")");
+    }
 };
 
 UI.prototype.makeMove = function(side, fromIdx, toIdx) {
@@ -142,7 +150,6 @@ UI.prototype.makeMove = function(side, fromIdx, toIdx) {
 UI.prototype.showGameResult = function(result) {
     var divResult = $("#game_result");
     var r = "";
-    console.log(result);
     if (result !== RESULT.NONE) {
         if (result === RESULT.WHITE) {
             r = "Game Over, White Wins!";
