@@ -13,6 +13,7 @@ $(function () {
     setTimeout(function () {
         g_eng.init();
         g_ui.showGameResult(g_ui._board._gameResult);
+        play(SIDE.BLACK);
     }, 0);
 });
 
@@ -29,4 +30,5 @@ function play(side) {
             g_ui.makeMove(g_board._curSide, fromPos, toPos);
         }
     }
+    g_ui.giveSuggestion();
 }

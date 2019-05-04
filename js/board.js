@@ -19,6 +19,7 @@ function Board() {
     ];
     this._curSide = SIDE.BLACK;
     this._moveHistory = [];
+    this._pos = {};
     this._gameResult = RESULT.NONE;
 }
 Board.prototype.clear = function () {
@@ -38,6 +39,8 @@ Board.prototype.reset = function () {
     ];
     this._curSide = SIDE.BLACK;
     this._gameResult = RESULT.NONE;
+    this._moveHistory = [];
+    this._pos = {};
 };
 Board.prototype.swap = function () {
     for (let idx = 0; idx < CELL_NUM; idx++) {
@@ -65,16 +68,21 @@ Board.prototype.makeMove = function (move) {
     this._stones[move.fromIdx] = STONE.EMPTY;
     this._stones[move.toIdx] = move.side;
     this._moveHistory.push(move);
+    var pc = this.getPoscode();
+    if(this._pos[pc] == null) {
+        this._pos[pc] = 1;
+    }else {
+        this._pos[pc] += 1;
+    }
     this._curSide = this._curSide == SIDE.BLACK ? SIDE.WHITE : SIDE.BLACK;
-    this.checkGameOver();
-    console.log("RESULT" + this._gameResult);
+    this.checkGameOver(pc);
 };
-Board.prototype.unmakeMove = function (move) {
-    this._stones[move.toIdx] = MOVE_STONE(move);
-    this._stones[move.fromIdx] = move.side;
-    this._curSide = this._curSide == SIDE.BLACK ? SIDE.WHITE : SIDE.BLACK;
-};
-Board.prototype.checkGameOver = function () {
+// Board.prototype.unmakeMove = function (move) {
+//     this._stones[move.toIdx] = MOVE_STONE(move);
+//     this._stones[move.fromIdx] = move.side;
+//     this._curSide = this._curSide == SIDE.BLACK ? SIDE.WHITE : SIDE.BLACK;
+// };
+Board.prototype.checkGameOver = function (pc) {
     var result;
     var whites = [];
     var blacks = [];
@@ -93,6 +101,10 @@ Board.prototype.checkGameOver = function () {
     result = this.checkFormation(this._stones, blacks, STONE.BLACK);
     if (result != RESULT.NONE) {
         this._gameResult = result;
+        return;
+    }
+    if(this._pos[pc] === 3) {
+        this._gameResult = RESULT.DRAW;
         return;
     }
 }
